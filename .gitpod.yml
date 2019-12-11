@@ -2,7 +2,7 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - init: go version
+  - init: chmod +x dappbox_build_linux.sh
   - command: ./dappbox_build_linux.sh
 
 ports:
