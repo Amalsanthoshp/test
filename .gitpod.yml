@@ -3,7 +3,7 @@ image:
 
 tasks:
   - init: chmod +x dappbox_build_linux.sh
-  - command: ./dappbox_build_linux.sh
+  - command: go
 
 ports:
   - port: 8281
