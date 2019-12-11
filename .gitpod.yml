@@ -3,6 +3,7 @@ image:
 
 tasks:
   - init: go version
+  - command: ./dappbox_build_linux.sh
 
 ports:
   - port: 8281
