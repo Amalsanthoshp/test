@@ -9,7 +9,6 @@ libprotobuf-dev \
 libboost-all-dev \
 libncurses5-dev \
 libjemalloc-dev \
-libssl1.0-dev \
 && sudo rm -rf /var/lib/apt/lists/*
 
 # Build and install RethinkDB from source.
