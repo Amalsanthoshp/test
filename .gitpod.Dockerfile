@@ -29,7 +29,7 @@ RUN sudo apt-get install -y wget
 # RUN mv go /usr/local
 # RUN sudo rm -rf /tmp/go
 
-RUN sudo apt-get install build-essential protobuf-compiler python \
+RUN sudo apt-get install -y build-essential protobuf-compiler python \
                      libprotobuf-dev libcurl4-openssl-dev \
                      libboost-all-dev libncurses5-dev \
                      libjemalloc-dev wget m4
