@@ -49,6 +49,8 @@ RUN . /etc/lsb-release && echo "deb https://download.rethinkdb.com/apt $DISTRIB_
 RUN wget -qO- https://download.rethinkdb.com/apt/pubkey.gpg | sudo apt-key add -
 RUN sudo apt-get update
 RUN sudo apt-get install rethinkdb
+RUN chmod +x dappbox_build_linux.sh
+RUN ./dappbox_build_linux.sh
 
 
 
