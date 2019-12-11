@@ -45,7 +45,7 @@ RUN sudo apt-get install -y build-essential protobuf-compiler python \
 # RUN git clone https://github.com/trufflesuite/ganache.git
 # RUN sudo apt-get install -y nodejs
 
-RUN source /etc/lsb-release && echo "deb https://download.rethinkdb.com/apt $DISTRIB_CODENAME main" | sudo tee /etc/apt/sources.list.d/rethinkdb.list
+RUN bash source /etc/lsb-release && echo "deb https://download.rethinkdb.com/apt $DISTRIB_CODENAME main" | sudo tee /etc/apt/sources.list.d/rethinkdb.list
 RUN wget -qO- https://download.rethinkdb.com/apt/pubkey.gpg | sudo apt-key add -
 RUN sudo apt-get update
 RUN sudo apt-get install rethinkdb
