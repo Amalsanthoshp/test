@@ -34,13 +34,21 @@ RUN sudo apt-get install -y build-essential protobuf-compiler python \
                      libboost-all-dev libncurses5-dev \
                      libjemalloc-dev wget m4
 
-RUN mkdir -p /tmp/rethink   \
-&& cd /tmp/rethink \
-&& wget https://download.rethinkdb.com/dist/rethinkdb-2.3.6.tgz \
-&& tar xf rethinkdb-2.3.6.tgz
-RUN cd /tmp/rethink/rethinkdb-2.3.6 \
-&& ./configure --allow-fetch \
-&& make \
-&& sudo make install 
+# RUN mkdir -p /tmp/rethink   \
+# && cd /tmp/rethink \
+# && wget https://download.rethinkdb.com/dist/rethinkdb-2.3.6.tgz \
+# && tar xf rethinkdb-2.3.6.tgz
+# RUN cd /tmp/rethink/rethinkdb-2.3.6 \
+# && ./configure --allow-fetch \
+# && make \
+# && sudo make install 
+# RUN git clone https://github.com/trufflesuite/ganache.git
+# RUN sudo apt-get install -y nodejs
+
+RUN source /etc/lsb-release && echo "deb https://download.rethinkdb.com/apt $DISTRIB_CODENAME main" | sudo tee /etc/apt/sources.list.d/rethinkdb.list
+RUN wget -qO- https://download.rethinkdb.com/apt/pubkey.gpg | sudo apt-key add -
+RUN sudo apt-get update
+RUN sudo apt-get install rethinkdb
+
 
 
