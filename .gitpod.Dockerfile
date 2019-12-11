@@ -38,7 +38,7 @@ RUN mkdir -p /tmp/rethink   \
 && cd /tmp/rethink \
 && wget https://download.rethinkdb.com/dist/rethinkdb-2.3.6.tgz \
 && tar xf rethinkdb-2.3.6.tgz
-RUN cd rethinkdb-2.3.6 \
+RUN cd /tmp/rethink/rethinkdb-2.3.6 \
 ./configure --allow-fetch \
 make \
 sudo make install 
