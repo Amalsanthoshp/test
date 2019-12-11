@@ -49,8 +49,67 @@ RUN . /etc/lsb-release && echo "deb https://download.rethinkdb.com/apt $DISTRIB_
 RUN wget -qO- https://download.rethinkdb.com/apt/pubkey.gpg | sudo apt-key add -
 RUN sudo apt-get update
 RUN sudo apt-get install rethinkdb
-RUN chmod +x dappbox_build_linux.sh
-RUN ./dappbox_build_linux.sh
+#setup influxdb
+RUN mkdir -p ~/go/src/github.com/influxdata
+RUN cd ~/go/src/github.com/influxdata
+RUN git clone https://github.com/influxdata/influxdb.git
+RUN cd ~/go/src/github.com/influxdata/influxdb
+RUN git checkout 1.5
+
+# environment variables
+RUN export ETHER_IP=http://142.93.0.84:8545
+RUN export ETHER_KEY=pwdnode
+RUN export DAPP_VERSION=2.0
+
+RUN export RETHINKDB_HOST=localhost
+
+#dappbox service dir
+
+RUN cd ~/go/src/github.com/AlphaDinoRC/ixxo_dappbox/cmd/dappboxservice/
+#get packages
+
+RUN go get -v ./...
+
+#dappbox service dir
+
+RUN cd ~/go/src/github.com/AlphaDinoRC/ixxo_dappbox/cmd/dappboxservice/
+
+#build the dappbox
+
+RUN go run build_dappboxservice.go
+
+#dappbox binary directory
+
+RUN cd ~/go/src/github.com/AlphaDinoRC/ixxo_dappbox/cmd/dappboxservice/bin/
+
+#start dappbox with specified auth type
+
+#start with auth type username/password
+
+RUN ./dappbox --gui-address=0.0.0.0:8384 --auth-type=username
+
+#start with auth type metamask
+#./dappbox --gui-address=0.0.0.0:8384 --auth-type=metamask
+
+#no auth type
+#./dappbox --gui-address=0.0.0.0:8384
+
+#move meta.json file inside dappbox front end
+#get path using dappbox.exe --paths command
+
+RUN cp ~/AppData/Local/DappBox/shared/meta.json ~/go/src/github.com/AlphaDinoRC/ixxo_dappbox/dappbox_default_front/
+
+#dappbox frontend directory
+
+RUN cd ~/go/src/github.com/AlphaDinoRC/ixxo_dappbox/dappbox_default_front/
+
+#get go dependency for front end
+
+RUN go get ./...
+
+#run dappbox front end
+
+RUN go run main.go
 
 
 
