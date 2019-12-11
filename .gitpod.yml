@@ -1,0 +1,9 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - init: go version
+
+ports:
+  - port: 8281
+    onOpen: open-preview
