@@ -53,64 +53,64 @@ RUN sudo apt-get install rethinkdb
 RUN mkdir -p ~/go/src/github.com/influxdata
 RUN cd ~/go/src/github.com/influxdata
 RUN git clone https://github.com/influxdata/influxdb.git
-RUN ls
-# RUN cd ~/go/src/github.com/influxdata/influxdb
-# RUN git checkout 1.5
+RUN mv influxdb ~/go/src/github.com/influxdata/
+RUN cd ~/go/src/github.com/influxdata/influxdb
+RUN git checkout 1.5
 
-# # environment variables
-# RUN export ETHER_IP=http://142.93.0.84:8545
-# RUN export ETHER_KEY=pwdnode
-# RUN export DAPP_VERSION=2.0
+# environment variables
+RUN export ETHER_IP=http://142.93.0.84:8545
+RUN export ETHER_KEY=pwdnode
+RUN export DAPP_VERSION=2.0
 
-# RUN export RETHINKDB_HOST=localhost
+RUN export RETHINKDB_HOST=localhost
 
-# #dappbox service dir
+#dappbox service dir
 
-# RUN cd ~/go/src/github.com/AlphaDinoRC/ixxo_dappbox/cmd/dappboxservice/
-# #get packages
+RUN cd ~/go/src/github.com/AlphaDinoRC/ixxo_dappbox/cmd/dappboxservice/
+#get packages
 
-# RUN go get -v ./...
+RUN go get -v ./...
 
-# #dappbox service dir
+#dappbox service dir
 
-# RUN cd ~/go/src/github.com/AlphaDinoRC/ixxo_dappbox/cmd/dappboxservice/
+RUN cd ~/go/src/github.com/AlphaDinoRC/ixxo_dappbox/cmd/dappboxservice/
 
-# #build the dappbox
+#build the dappbox
 
-# RUN go run build_dappboxservice.go
+RUN go run build_dappboxservice.go
 
-# #dappbox binary directory
+#dappbox binary directory
 
-# RUN cd ~/go/src/github.com/AlphaDinoRC/ixxo_dappbox/cmd/dappboxservice/bin/
+RUN cd ~/go/src/github.com/AlphaDinoRC/ixxo_dappbox/cmd/dappboxservice/bin/
 
-# #start dappbox with specified auth type
+#start dappbox with specified auth type
 
-# #start with auth type username/password
+#start with auth type username/password
 
-# RUN ./dappbox --gui-address=0.0.0.0:8384 --auth-type=username
+RUN ./dappbox --gui-address=0.0.0.0:8384 --auth-type=username
 
-# #start with auth type metamask
-# #./dappbox --gui-address=0.0.0.0:8384 --auth-type=metamask
+#start with auth type metamask
+#./dappbox --gui-address=0.0.0.0:8384 --auth-type=metamask
 
-# #no auth type
-# #./dappbox --gui-address=0.0.0.0:8384
+#no auth type
+#./dappbox --gui-address=0.0.0.0:8384
 
-# #move meta.json file inside dappbox front end
-# #get path using dappbox.exe --paths command
+#move meta.json file inside dappbox front end
+#get path using dappbox.exe --paths command
 
-# RUN cp ~/AppData/Local/DappBox/shared/meta.json ~/go/src/github.com/AlphaDinoRC/ixxo_dappbox/dappbox_default_front/
+RUN cp ~/AppData/Local/DappBox/shared/meta.json ~/go/src/github.com/AlphaDinoRC/ixxo_dappbox/dappbox_default_front/
 
-# #dappbox frontend directory
+#dappbox frontend directory
 
-# RUN cd ~/go/src/github.com/AlphaDinoRC/ixxo_dappbox/dappbox_default_front/
+RUN cd ~/go/src/github.com/AlphaDinoRC/ixxo_dappbox/dappbox_default_front/
 
-# #get go dependency for front end
+#get go dependency for front end
 
-# RUN go get ./...
+RUN go get ./...
 
-# #run dappbox front end
+#run dappbox front end
 
-# RUN go run main.go
+RUN go run main.go
 
 
 
