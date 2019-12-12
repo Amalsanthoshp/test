@@ -14,18 +14,18 @@ export DAPP_VERSION=2.0
 export RETHINKDB_HOST=localhost
 
 #dappbox service dir
-cd ~/go/src/github.com/AlphaDinoRC/ixxo_dappbox/cmd/dappboxservice/
+cd $GOPATH/src/github.com/AlphaDinoRC/ixxo_dappbox/cmd/dappboxservice/
 #get packages
 go get -v ./...
 
 #dappbox service dir
-cd ~/go/src/github.com/AlphaDinoRC/ixxo_dappbox/cmd/dappboxservice/
+cd $GOPATH/src/github.com/AlphaDinoRC/ixxo_dappbox/cmd/dappboxservice/
 
 #build the dappbox
 go run build_dappboxservice.go
 
 #dappbox binary directory
-cd ~/go/src/github.com/AlphaDinoRC/ixxo_dappbox/cmd/dappboxservice/bin/
+cd $GOPATH/src/github.com/AlphaDinoRC/ixxo_dappbox/cmd/dappboxservice/bin/
 
 #start dappbox with specified auth type
 
@@ -43,7 +43,7 @@ cd ~/go/src/github.com/AlphaDinoRC/ixxo_dappbox/cmd/dappboxservice/bin/
 cp ~/AppData/Local/DappBox/shared/meta.json ~/go/src/github.com/AlphaDinoRC/ixxo_dappbox/dappbox_default_front/
 
 #dappbox frontend directory
-cd ~/go/src/github.com/AlphaDinoRC/ixxo_dappbox/dappbox_default_front/
+cd $GOPATH/src/github.com/AlphaDinoRC/ixxo_dappbox/dappbox_default_front/
 
 #get go dependency for front end
 go get ./...
