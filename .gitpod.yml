@@ -2,8 +2,8 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - init: chmod +x dappbox_build_linux.sh
-  - command: ls
+  - init: chmod +x setup.sh
+  - command: ./setup.sh
 
 ports:
   - port: 8281
