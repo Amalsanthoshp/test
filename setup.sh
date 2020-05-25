@@ -1,3 +1,9 @@
+
+
+# hello i made some changes!!!
+# i've added some comments LOL!!
+mkdir thenga
+
 mkdir /workspace/go
 mkdir /workspace/go/src
 mkdir /workspace/go/src/github.com/
