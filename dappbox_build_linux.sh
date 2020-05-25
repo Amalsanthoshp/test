@@ -1,5 +1,5 @@
 #!/bin/sh
-
+# small change in fork synceing
 #setup influxdb
 mkdir -p ~/go/src/github.com/influxdata
 cd ~/go/src/github.com/influxdata
